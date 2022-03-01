@@ -6,5 +6,18 @@ export interface ParticipantProfilesQueryData {
 }
 
 export const PARTICIPANT_PROFILES_QUERY = gql`
-
+    query {
+        profile {
+            float
+            gamesPlayed
+            winrate
+            rank
+        }
+       ParticipantProfile {
+           summonerName
+           queueProfile
+           championProfile
+           roleProfile
+       }
+    }
 `;
