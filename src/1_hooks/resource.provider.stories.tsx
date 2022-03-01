@@ -23,6 +23,7 @@ const StoryComponent: React.FC<StoryComponentProps> = ({
     } = useResource();
 
     if (isChampionIdValid(championId)) {
+       console.log(getChampionName(championId),"--loging function") ;
         return (
             <>
                 <img

@@ -6,18 +6,13 @@ export interface ParticipantProfilesQueryData {
 }
 
 export const PARTICIPANT_PROFILES_QUERY = gql`
-    query {
-        profile {
-            float
-            gamesPlayed
-            winrate
-            rank
+    query PARTICIPANT_PROFILES_QUERY{
+        PARTICIPANTS {
+            summonerName
+            championId
+            role
         }
-       ParticipantProfile {
-           summonerName
-           queueProfile
-           championProfile
-           roleProfile
-       }
     }
 `;
+
+// got stuck with the .map error of winrate coming from draftsummonerprofiles..it is weird!

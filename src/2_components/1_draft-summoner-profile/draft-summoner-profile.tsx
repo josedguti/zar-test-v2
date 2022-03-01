@@ -1,9 +1,11 @@
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import { argsToArgsConfig } from "graphql/type/definition";
 import React from "react";
 import { useResource } from "../../1_hooks/resource.provider";
 import { Card, Typography } from "../../common/core/components";
 import { Client, isChampionIdValid, isRoleValid } from "../../common/league";
 import { ChampionId } from "../../common/league/client";
+import { DataNoRoleNoChampion, DataRoleChampion, DataRoleNoChampion, NoDataNoRoleNoChampion, NoDataRoleChampion, NoDataRoleNoChampion } from "./draft-summoner-profile.stories";
 
 // https://v4.mui.com/styles/api/#examples-2
 const useStyles = makeStyles((theme) => ({
@@ -78,13 +80,15 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
           mt={2.5}
           mb={2.5}
         >
-          <img src="https://cdn.zargg.workers.dev/champion/-1.png" alt="champion image" />
-          {summonerName}
-          <br />
-          <p>no data</p>
+          <img
+            src={`https://cdn.zargg.workers.dev/champion/${championId}.png`}
+            alt="champion image"
+          />
+          <div>{NoDataNoRoleNoChampion.args.profile.summonerName}</div>
+          <div>no data</div>
         </Typography>
       </Card>
-      <Card elevation="1" p={2}>
+      <Card elevation="1" p={1}>
         <Typography
           variant="textMain"
           paragraph
@@ -92,13 +96,18 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
           mt={2.5}
           mb={2.5}
         >
-            <img src="https://cdn.zargg.workers.dev/champion/-1.png" alt="champion image" />
-          {summonerName} as {role}
+          <img
+            src={`https://cdn.zargg.workers.dev/champion/${championId}.png`}
+            alt="champion image"
+          />
+          <div>{NoDataNoRoleNoChampion.args.profile.summonerName}</div>
+          <div>no data</div>
           <br />
-          no data         no data
+          <div>as {NoDataRoleNoChampion.args.profile.role}</div>
+          <div>no data</div>
         </Typography>
       </Card>
-      <Card elevation="1" p={2}>
+      <Card elevation="1" p={1}>
         <Typography
           variant="textMain"
           paragraph
@@ -106,13 +115,18 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
           mt={2.5}
           mb={2.5}
         >
-            <img src="https://cdn.zargg.workers.dev/champion/245.png" alt="champion image" />
-          {summonerName} on Ekko
+          <img
+            src={`https://cdn.zargg.workers.dev/champion/${NoDataRoleChampion.args.profile.championId}.png`}
+            alt="champion image"
+          />
+          <div>{NoDataNoRoleNoChampion.args.profile.summonerName}</div>
+          <div>no data</div>
           <br />
-          no data         no data
+          <div>as Ekko</div>
+          <div>no data</div>
         </Typography>
       </Card>
-      <Card elevation="1" p={2}>
+      <Card elevation="1" p={1}>
         <Typography
           variant="textMain"
           paragraph
@@ -120,17 +134,18 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
           mt={2.5}
           mb={2.5}
         >
-            <img src="https://cdn.zargg.workers.dev/champion/-1.png" alt="champion image" />
-          {summonerName} 
-          <br />
-          <span style={{color: 'blue'}}>{winrate}%</span> wr
-          <br />
-          {tier} {division}
-          <br />
-          {gamesPlayed}
+          <img
+            src={`https://cdn.zargg.workers.dev/champion/${championId}.png`}
+            alt="champion image"
+          />
+          <div>{NoDataNoRoleNoChampion.args.profile.summonerName}</div>
+          <div>{DataNoRoleNoChampion.args.profile.winrate}% wr</div>
+          <div>{DataNoRoleNoChampion.args.profile.tier} {DataNoRoleNoChampion.args.profile.division}</div>
+          <div>{DataNoRoleNoChampion.args.profile.gamesPlayed} games</div>
+          
         </Typography>
       </Card>
-      <Card elevation="1" p={2}>
+      <Card elevation="1" p={1}>
         <Typography
           variant="textMain"
           paragraph
@@ -138,24 +153,22 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
           mt={2.5}
           mb={2.5}
         >
-            <img src="https://cdn.zargg.workers.dev/champion/-1.png" alt="champion image" />
-            <br />
-          {summonerName} 
+          <img
+            src={`https://cdn.zargg.workers.dev/champion/${championId}.png`}
+            alt="champion image"
+          />
+          <div>{NoDataNoRoleNoChampion.args.profile.summonerName}</div>
+          <div>{DataNoRoleNoChampion.args.profile.winrate}% wr</div>
+          <div>{DataNoRoleNoChampion.args.profile.tier} {DataNoRoleNoChampion.args.profile.division}</div>
+          <div>{DataNoRoleNoChampion.args.profile.gamesPlayed} games</div>
           <br />
-          <span style={{color: 'blue'}}>{winrate}%</span> wr
-          <br />
-          {tier} {division}
-          <br />
-          {gamesPlayed}
-          <br />
-          as {role} {roleProfile.winrate}% wr 
-          <br />
-          {roleProfile.kda} kda
-          <br />
-          {roleProfile.gamesPlayed} games
+          <div>as {DataRoleNoChampion.args.profile.role}</div>
+          <div>{DataRoleNoChampion.args.profile.roleProfile.winrate}% wr</div>
+          <div>{DataRoleNoChampion.args.profile.roleProfile.kda} kda</div>
+          <div>{DataRoleNoChampion.args.profile.roleProfile.gamesPlayed} games</div>
         </Typography>
       </Card>
-      <Card elevation="1" p={2}>
+      <Card elevation="1" p={1}>
         <Typography
           variant="textMain"
           paragraph
@@ -163,26 +176,23 @@ export const DraftSummonerProfile: React.FC<DraftSummonerProfileProps> = ({
           mt={2.5}
           mb={2.5}
         >
-            <img src="https://cdn.zargg.workers.dev/champion/245.png" alt="champion image" />
-            <br />
-          {summonerName} 
+          <img
+            src={`https://cdn.zargg.workers.dev/champion/${NoDataRoleChampion.args.profile.championId}.png`}
+            alt="champion image"
+          />
+          <div>{NoDataNoRoleNoChampion.args.profile.summonerName}</div>
+          <div>{DataNoRoleNoChampion.args.profile.winrate}% wr</div>
+          <div>{DataNoRoleNoChampion.args.profile.tier} {DataNoRoleNoChampion.args.profile.division}</div>
+          <div>{DataNoRoleNoChampion.args.profile.gamesPlayed} games</div>
           <br />
-          <span style={{color: 'blue'}}>{winrate}%</span> wr
-          <br />
-          {tier} {division}
-          <br />
-          {gamesPlayed}
-          <br />
-          on Ekko <span style={{color: 'blue'}}>51.2%</span> wr 
-          <br />
-          2.4 kda
-          <br />
-          12 games
+          <div>as Ekko</div>
+          <div>{DataRoleChampion.args.profile.championProfile.winrate}% wr</div>
+          <div>{DataRoleChampion.args.profile.championProfile.kda} kda</div>
+          <div>{DataRoleChampion.args.profile.championProfile.gamesPlayed} games</div>
         </Typography>
       </Card>
     </>
   );
 };
-
 
 // championProfile.winrate/kda/gamesPlayed was giving error of undefined thats why I typed them manually
